@@ -1,0 +1,246 @@
+# Sales & Demand Forecasting for Businesses
+
+## Project Overview
+
+This project analyzes historical sales data and builds a simple machine learning approach for forecasting monthly sales.
+
+The analysis uses the **Sample Superstore dataset** covering sales from 2014 to 2017. The project explores sales trends and monthly seasonality, then compares a baseline Linear Regression model with a seasonal Linear Regression model to determine whether including monthly patterns improves forecasting accuracy.
+
+## Business Problem
+
+Businesses need reliable sales forecasts to support planning and decision-making.
+
+Historical sales data can reveal patterns such as:
+
+- Overall sales growth over time
+- Months with relatively higher or lower sales
+- Seasonal patterns
+- Periods where actual sales differ significantly from forecasts
+
+This project uses historical monthly sales data to investigate these patterns and evaluate whether incorporating seasonality can improve sales predictions.
+
+## Objectives
+
+The main objectives of this project are to:
+
+1. Analyze historical sales trends from 2014 to 2017.
+2. Aggregate sales data into monthly sales totals.
+3. Identify monthly and seasonal sales patterns.
+4. Create a chronological training and testing dataset.
+5. Build a baseline Linear Regression forecasting model.
+6. Build a seasonal Linear Regression model using monthly patterns.
+7. Compare the models using Mean Absolute Error (MAE).
+8. Extract business insights from the forecasting results.
+
+## Dataset
+
+The project uses the **Sample Superstore dataset**.
+
+The dataset contains:
+
+- **9,994 records**
+- **21 columns**
+- Sales transactions covering **2014–2017**
+
+The analysis focuses primarily on the `Order Date` and `Sales` fields to create a monthly sales forecasting dataset.
+
+## Methodology
+
+The project follows this workflow:
+
+Raw Sales Data
+
+Data Preparation
+
+Monthly Sales Aggregation
+
+Exploratory Analysis
+
+Feature Engineering
+
+Chronological Train/Test Split
+
+Baseline Model
+
+Seasonal Model
+
+Model Evaluation
+
+Business Insights
+
+### 1. Data Preparation
+
+The sales dataset is loaded and prepared for analysis. The `Order Date` field is converted into a date format and used to extract year and month information.
+
+### 2. Monthly Aggregation
+
+Individual transaction-level sales are aggregated into monthly sales totals.
+
+This produces a time series containing one observation for each month from 2014 through 2017.
+
+### 3. Exploratory Analysis
+
+The project examines:
+
+- Annual sales trends
+- Average monthly sales
+- Monthly sales patterns
+- Differences between actual and predicted sales
+
+### 4. Train/Test Split
+
+The data is split chronologically rather than randomly.
+
+**Training period:**
+2014-01 to 2016-12
+
+**Testing period:**
+2017-01 to 2017-12
+
+This allows the models to learn from historical data and then be evaluated on a later period.
+
+## Models
+
+### Baseline Linear Regression
+
+The baseline model uses:
+
+- `Year`
+- `Month`
+
+as input features.
+
+The model is trained using the 2014–2016 data and evaluated on the 2017 test period.
+
+### Seasonal Linear Regression
+
+A second Linear Regression model incorporates monthly categorical patterns using month-based features.
+
+The purpose is to determine whether explicitly representing seasonality improves forecasting performance compared with the baseline model.
+
+## Model Evaluation
+
+The models are evaluated using **Mean Absolute Error (MAE)**.
+
+MAE measures the average absolute difference between the actual sales values and the model's predictions.
+
+| Model                      |       MAE |
+| -------------------------- | --------: |
+| Baseline Linear Regression | 12,180.97 |
+| Seasonal Linear Regression | 10,793.89 |
+
+The seasonal model produced a lower MAE than the baseline model.
+
+This represents an improvement of approximately **11.4%** on the 2017 test data.
+
+## Key Findings
+
+### Sales Growth
+
+Annual sales increased from approximately **$484K in 2014** to approximately **$733K in 2017**, indicating an overall upward sales trend across the period analyzed.
+
+### Monthly Seasonality
+
+Sales vary across different months.
+
+February is generally among the lower-sales months, while September, November, and December tend to record higher sales.
+
+This indicates a noticeable seasonal pattern in the historical sales data.
+
+### Seasonality Improved Forecasting
+
+Including monthly patterns reduced MAE from **12,180.97** to **10,793.89**.
+
+This suggests that incorporating seasonality helped the model produce more accurate predictions on the 2017 test data.
+
+### Large Sales Spikes
+
+The model captures the general seasonal pattern but can miss unusually large sales increases.
+
+For example:
+
+- **Actual November 2017 sales:** approximately $118,448
+- **Forecast:** approximately $88,418
+
+This illustrates that the model does not fully capture every unusually high sales period.
+
+## Business Insights
+
+The identified patterns could support general business planning in areas such as:
+
+- Inventory planning
+- Staffing
+- Budgeting
+- Operational planning
+
+However, the forecast should be treated as an estimate rather than an exact prediction.
+
+## Limitations
+
+This project uses a relatively simple forecasting approach based primarily on time and monthly seasonality.
+
+The model may therefore struggle with unusual sales spikes or other factors that are not represented in the selected features.
+
+The analysis also evaluates the models using the 2017 test period, so the reported performance reflects this specific historical test period.
+
+## Technologies Used
+
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Scikit-learn
+- Jupyter Notebook
+
+## Project Structure
+
+Sales-Forecasting/
+│
+├── data/
+│ └── Sample - Superstore.csv
+│
+├── Sales Project.ipynb
+│
+└── README.md
+
+## How to Run the Project
+
+### 1. Clone the repository
+
+git clone <your-repository-url>
+
+### 2. Navigate into the project directory
+
+cd Sales-Forecasting
+
+### 3. Install the required Python libraries
+
+pip install pandas numpy matplotlib scikit-learn jupyter
+
+### 4. Open the notebook
+
+jupyter notebook
+
+Open:
+
+Sales Project.ipynb
+
+Make sure the dataset is located at:
+
+data/Sample - Superstore.csv
+
+Then run the notebook from beginning to end.
+
+## Conclusion
+
+This project demonstrates how historical sales data can be transformed into a monthly forecasting dataset and used to build and evaluate simple machine learning models.
+
+The analysis shows an overall upward sales trend and noticeable monthly seasonality. The seasonal Linear Regression model achieved a lower MAE than the baseline model on the 2017 test data, showing that incorporating monthly patterns improved the forecasts in this evaluation.
+
+The project also demonstrates an important limitation of simple forecasting models: while they can capture general patterns, they may not accurately predict unusually large sales spikes.
+
+## Project Notebook
+
+For the complete data preparation, analysis, visualizations, modelling, evaluation, and business insights, see:
+
+**`Sales Project.ipynb`**
