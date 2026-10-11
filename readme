@@ -83,7 +83,7 @@ The reported performance is also based specifically on the **2017 test period**.
 
 ## Project Structure
 
-```text
+
 Sales-Demand-Forecasting/
 │
 ├── data/
@@ -92,28 +92,21 @@ Sales-Demand-Forecasting/
 ├── Sales Project.ipynb
 │
 └── README.md
-```
 
 ## Run the Project
 
 Clone the repository:
 
-```bash
 git clone https://github.com/Oyoo-Frankline/Sales-Demand-Forecasting-Model.git
 cd Sales-Demand-Forecasting-Model
-```
 
 Install the required libraries:
 
-```bash
 pip install pandas numpy matplotlib scikit-learn jupyter
-```
 
 Open Jupyter Notebook:
 
-```bash
 jupyter notebook
-```
 
 Then open **`Sales Project.ipynb`** and run the notebook from beginning to end.
 
